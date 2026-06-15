@@ -14,9 +14,17 @@ class DurabilityModelTest {
     }
 
     @Test
-    void durableQuorumSurvivesSingleNodePowerLoss() {
-        DurabilityDecision decision = new DurabilityModel().evaluate(AckMode.DURABLE_QUORUM, FailureModel.SINGLE_NODE_POWER_LOSS);
+    void durableQuorumSurvivesSingleNodeLoss() {
+        DurabilityDecision decision = new DurabilityModel().evaluate(AckMode.DURABLE_QUORUM, FailureModel.SINGLE_NODE_LOSS);
 
         assertThat(decision.survives()).isTrue();
+    }
+
+    @Test
+    void localFsyncDoesNotSurviveSingleNodeLoss() {
+        DurabilityDecision decision = new DurabilityModel().evaluate(AckMode.LOCAL_FSYNC, FailureModel.SINGLE_NODE_LOSS);
+
+        assertThat(decision.survives()).isFalse();
+        assertThat(decision.explanation()).contains("one local copy");
     }
 }

@@ -5,6 +5,6 @@ package com.hkg.distributedstorageiostack.replication;
  */
 public enum FailureModel {
     PROCESS_CRASH,
-    SINGLE_NODE_POWER_LOSS,
+    SINGLE_NODE_LOSS,
     CORRELATED_POWER_LOSS
 }

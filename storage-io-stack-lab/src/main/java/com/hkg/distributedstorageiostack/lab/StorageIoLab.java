@@ -17,7 +17,7 @@ public final class StorageIoLab {
         LsmDebtSimulator simulator = new LsmDebtSimulator(new LsmConfig(1024, 4, 1024));
         simulator.ingest(6 * 1024L);
         boolean quorumSurvives = new DurabilityModel()
-                .evaluate(AckMode.DURABLE_QUORUM, FailureModel.SINGLE_NODE_POWER_LOSS)
+                .evaluate(AckMode.DURABLE_QUORUM, FailureModel.SINGLE_NODE_LOSS)
                 .survives();
         System.out.println("storage-io-stack lab");
         System.out.println("l0Files=" + simulator.snapshot().l0Files());

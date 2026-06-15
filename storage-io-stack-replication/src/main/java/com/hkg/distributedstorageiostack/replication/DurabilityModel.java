@@ -9,7 +9,7 @@ public final class DurabilityModel {
             return new DurabilityDecision(true, "quorum persisted the entry");
         }
         if (mode == AckMode.LOCAL_FSYNC) {
-            boolean survives = failure != FailureModel.SINGLE_NODE_POWER_LOSS || failure == FailureModel.PROCESS_CRASH;
+            boolean survives = failure == FailureModel.PROCESS_CRASH;
             return new DurabilityDecision(survives, survives ? "local WAL is stable" : "only one local copy was durable");
         }
         boolean survives = failure == FailureModel.PROCESS_CRASH;
