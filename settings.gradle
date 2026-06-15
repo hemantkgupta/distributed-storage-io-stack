@@ -1,0 +1,11 @@
+rootProject.name = 'distributed-storage-io-stack'
+
+include 'storage-io-stack-common'
+include 'storage-io-stack-device'
+include 'storage-io-stack-wal'
+include 'storage-io-stack-cache'
+include 'storage-io-stack-page'
+include 'storage-io-stack-lsm'
+include 'storage-io-stack-replication'
+include 'storage-io-stack-metrics'
+include 'storage-io-stack-lab'
